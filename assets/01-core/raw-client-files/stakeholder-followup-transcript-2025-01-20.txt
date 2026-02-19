@@ -1,0 +1,270 @@
+Truepoint HR Solutions — Follow-up Interview
+January 20, 2025
+Duration: 15 minutes 36 seconds
+Speakers: Lisa Chen, Marcus Williams, Priya Sharma, Sarah Mitchell
+
+Sarah Mitchell  0:01
+Hey everyone, thanks for hopping back on. I know we just talked last week but I had a handful of follow-up questions that came out of the initial analysis. Shouldn't take too long.
+
+Lisa Chen  0:10
+No worries. I'm between calls so this is actually good timing for once.
+
+Marcus Williams  0:14
+Same. I just got off a call with a client who wanted to know if he could fire someone for, and I quote, having a bad attitude. So. You know. Living the dream.
+
+Lisa Chen  0:23
+Oh god, was that the landscaping guy in Raleigh?
+
+Marcus Williams  0:26
+Yep.
+
+Lisa Chen  0:27
+He asks that every quarter. I swear. Tell him to document the performance issues and call us back when he has something concrete.
+
+Marcus Williams  0:33
+That's literally what I said. Word for word. Eleven years of Lisa training, apparently it stuck.
+
+Sarah Mitchell  0:39
+Ha. Well, speaking of things sticking, let me start with the easy one. Lisa, did you get a chance to set up that Drive access for me?
+
+Lisa Chen  0:47
+Yes! I sent it yesterday afternoon. You should have editor access to the main shared drive now. Let me know if the link didn't work, sometimes the permissions are weird when it's a shared drive versus a regular folder. Did you get in okay?
+
+Sarah Mitchell  0:59
+Yep, I'm in. I've been poking around for the last day or so and I can definitely see what you were talking about with the folder situation. It's, uh, it's something.
+
+Lisa Chen  1:08
+It's a disaster, you can say it.
+
+Sarah Mitchell  1:11
+I was going to say it has character. But yeah. It's a lot. Which is actually fine for my purposes because I need to see it in its natural state before we start organizing anything. Oh, one thing though, Marcus, Lisa mentioned you have a separate drive for construction stuff?
+
+Marcus Williams  1:27
+Yeah, I set that up, I don't know, maybe two years ago? Because I kept losing my construction templates in the main drive. So I just made my own. Which I realize is part of the problem we're trying to solve, but at the time it was like, I need to find things and I can't, so.
+
+Lisa Chen  1:43
+I didn't even know about that drive until like six months ago. He just casually mentioned it in a team meeting and I was like, excuse me, what?
+
+Marcus Williams  1:51
+In my defense, I told you about it.
+
+Lisa Chen  1:53
+You did not.
+
+Marcus Williams  1:55
+I definitely sent a Slack about it.
+
+Lisa Chen  1:57
+Marcus, I get eight hundred Slacks a day. You can't just Slack something and assume I absorbed it.
+
+Sarah Mitchell  2:02
+Okay well, regardless, Lisa, can you forward me that link too after the call? I need to include it in the content audit.
+
+Lisa Chen  2:08
+Yeah, I'll send it right after this. And actually, now that I'm thinking about it, there might also be a few things in David's old drive from before I took over. But I'm honestly not sure if any of that is relevant anymore. It's mostly stuff from like 2015, 2016.
+
+Sarah Mitchell  2:22
+Good to know. Actually, that reminds me, when you're poking around later, is there a folder called Archive 2021 in the main drive?
+
+Lisa Chen  2:30
+Yes. Ignore that entire thing. That was from before we restructured how we do client services and literally nothing in there reflects how we work now. I keep meaning to delete it but I'm afraid there's like one document in there someone might need someday, so it just sits there. Haunting me.
+
+Sarah Mitchell  2:47
+Noted. Okay, so let me get into the real questions. First one is about cross-coverage. Last time you guys mentioned that covering someone's clients is one of the worst pain points. I want to figure out which clients we should prioritize for detailed handoff briefs. So like, which types of clients create the most chaos when someone else has to step in?
+
+Marcus Williams  3:08
+Oh, multi-state. A hundred percent. No question.
+
+Priya Sharma  3:12
+Yeah, I was going to say the same thing.
+
+Marcus Williams  3:14
+So I've got two construction clients right now that operate across North Carolina, South Carolina, and Virginia. And each state has totally different rules. Different workers' comp requirements, different overtime exemptions, different posting requirements. Like, the Virginia overtime rules changed last year and that only applies to the Virginia crews, not the Carolina ones. So if Priya has to cover one of those clients, she's not just learning one client, she's basically downloading three states' worth of compliance rules for one company. It's a nightmare.
+
+Lisa Chen  3:46
+And honestly it's not even just the multi-state ones. The clients that are in some kind of transition are really hard too. Like, Priya, tell her about your PEO client.
+
+Priya Sharma  3:55
+Oh yeah. So I have this tech startup, they're about forty employees, and they're in the process of moving off a PEO to managing their own HR in-house. And we're helping them through that transition. But the thing is, it's like this rolling handoff where every week something different moves over. Right now the PEO still handles benefits and payroll, but we've taken over compliance and onboarding. And next month the payroll is supposed to come over but they might push it. And there's all these little details about what's been migrated and what hasn't and what the PEO is still responsible for.
+
+Priya Sharma  4:28
+If Marcus had to cover that client tomorrow, I honestly don't know how I would get him up to speed. I'd have to write like a five-page memo, and even then I'd probably forget something important. Like, they have this weird thing where three of their employees are technically still employed through the PEO for benefits purposes even though they report to the startup. It's a whole, it's a thing.
+
+Marcus Williams  4:49
+See, I didn't even know that. That's exactly the kind of detail that would bite you.
+
+Lisa Chen  4:54
+And then the third category is the restaurant groups. Because tipped employees are just, they're their own universe. Tip credits, tip pooling, the fact that the rules are different in every state, and our restaurant clients tend to have really high turnover so there's always something happening. Always an onboarding, always a termination, always a question about overtime for tipped workers.
+
+Sarah Mitchell  5:16
+So if I'm hearing you right, the three priority categories for detailed client briefs would be multi-state operations, clients in some kind of transition like PEO migrations, and then industry-specific situations, primarily restaurants with tipped employees. Does that cover it?
+
+Lisa Chen  5:32
+Yeah, I think that's probably eighty percent of the hard handoff situations right there. The straightforward ones, you know, single-state, twenty employees, standard handbook, those are pretty easy to cover. Someone could figure that out in fifteen minutes. It's the messy ones that eat up half a day.
+
+Marcus Williams  5:48
+Agreed. And honestly, if we had good briefs for even just the top ten complex clients, that would be a game changer. Right now we've got nothing. Like, the handoff process when someone goes on vacation is basically a five-minute conversation in the hallway and then good luck.
+
+Sarah Mitchell  6:03
+Good, that helps me prioritize. Okay, switching gears. I'm going to be updating the handbook templates as part of the content cleanup, and I want to make sure I have the right numbers. Can someone confirm what minimum wage rates you're currently using for the four main states? North Carolina, South Carolina, Virginia, and Georgia?
+
+Marcus Williams  6:22
+Uh, yeah, so North Carolina is still at the federal minimum, seven twenty-five. Same with South Carolina, seven twenty-five.
+
+Lisa Chen  6:30
+Which is kind of wild that it's still there but that's a whole other conversation.
+
+Marcus Williams  6:34
+Yeah. Virginia went up to twelve forty-one back in January. And then Georgia is the fun one.
+
+Priya Sharma  6:42
+Oh, is this the Georgia thing? I just learned about this.
+
+Marcus Williams  6:45
+Yeah, so Georgia technically has a state minimum wage of five fifteen, which is lower than the federal floor. So the federal rate of seven twenty-five is what actually applies. But if you look at the Georgia statute, it says five fifteen, and I've seen people put that in documents because they just looked up the state rate and ran with it.
+
+Lisa Chen  7:04
+We've had that happen here. I'm not going to say who, but someone put the Georgia state rate in a handbook once, and I caught it in review. But imagine if I hadn't caught it. A client is handing out an employee handbook that says their minimum wage is five fifteen when it's actually seven twenty-five. That's, I mean, that's a problem.
+
+Priya Sharma  7:22
+Was it me? It sounds like something I would have done in my first month.
+
+Lisa Chen  7:25
+I'm not saying who it was.
+
+Marcus Williams  7:27
+It was definitely me, like four years ago.
+
+Lisa Chen  7:30
+Marcus!
+
+Marcus Williams  7:31
+What? It's fine, it was years ago. And it's exactly why this knowledge base thing is important. Because that's the kind of thing where if you just had a reference that said, hey, for Georgia, the state rate is five fifteen but the federal floor applies so always use seven twenty-five, you'd never make that mistake.
+
+Sarah Mitchell  7:47
+Right. So whatever we build, the state compliance reference needs to have that kind of contextual note. Not just the number but the why behind it. Got it. And Virginia at twelve forty-one, is that expected to change again soon?
+
+Marcus Williams  7:59
+I don't think so. I think there was supposed to be another scheduled increase but I'd have to check. We usually watch the Department of Labor updates quarterly.
+
+Lisa Chen  8:08
+Oh, I can send you the tracking spreadsheet. Marcus actually maintains a really good one. It's honestly one of the only documents in the whole drive that I trust completely because Marcus updates it every quarter like clockwork.
+
+Marcus Williams  8:20
+Thank you. I do have some organizational skills. They're just, you know, concentrated in one spreadsheet.
+
+Sarah Mitchell  8:27
+I'd love to see that spreadsheet. That sounds like exactly the kind of thing that should be a core reference in the knowledge base. Okay, Marcus, this next one is for you specifically. So one of the biggest gaps I'm seeing as I go through the Drive is construction industry knowledge. The prevailing wage stuff, Davis-Bacon requirements, multi-state workers' comp for construction crews. As far as I can tell, none of that is documented anywhere. It's all in your head.
+
+Marcus Williams  8:53
+Yeah, that's, I mean, that's accurate. And kind of terrifying when you say it out loud like that.
+
+Lisa Chen  8:58
+I've been telling him this for two years. Two years, Marcus.
+
+Marcus Williams  9:02
+I know, I know. It's just, documenting it is a whole project, and I'm always dealing with the day-to-day client stuff, so it keeps getting pushed. But yeah, if I got hit by a bus tomorrow, we'd be in real trouble on the construction side.
+
+Sarah Mitchell  9:15
+Well, let's not wait for the bus scenario. What I'd like to do is schedule a focused knowledge capture session. Basically I'd interview you for about an hour, maybe ninety minutes, and then I'd turn that into structured reference files for the knowledge base. Would you be up for that?
+
+Marcus Williams  9:30
+Oh absolutely. Yeah. I've been wanting to do something like this. It's just, I never knew how to start. Like, do I just open a Google Doc and start typing everything I know about prevailing wages? That felt overwhelming. But if you're going to ask me questions and structure it, that's way easier.
+
+Sarah Mitchell  9:46
+Exactly, that's the idea. I'll prep specific topics based on what I'm seeing in the Drive so we make the most of the time. When works for you next week?
+
+Marcus Williams  9:55
+Uh, Wednesday morning? I try to keep Wednesdays lighter on client calls so I can do internal stuff. Mornings are best, like nine or ten.
+
+Sarah Mitchell  10:04
+Wednesday morning works great. I'll send a calendar invite for nine thirty.
+
+Lisa Chen  10:08
+Can I sit in on that? Not to take over, I promise, but there might be things Marcus doesn't think to mention because he just takes them for granted. Like, the certified payroll thing. Marcus, would you have thought to mention certified payroll?
+
+Marcus Williams  10:22
+Honestly, probably not. It's so second nature to me that I forget other people don't know what it is.
+
+Lisa Chen  10:27
+See? That's why I should be there.
+
+Sarah Mitchell  10:30
+Yeah, that's a great idea actually. Having a second person who can prompt on things is really useful. Okay, last topic. Escalation guidelines. Lisa, I need to build a framework for when a consultant should loop you in versus handle something themselves. And I want to know if you'd prefer to define that yourself, like top-down, here are my rules, or if you'd rather work through it collaboratively with the team.
+
+Lisa Chen  10:55
+So, okay. My gut reaction is to say I should just define it because I know what's high-risk and what's not. But honestly, I think that's part of the problem. The rules have always been in my head, and even I'm not consistent about them. Like, sometimes I'll review a handbook before it goes out and sometimes I won't, and it depends on who's sending it and how busy I am and whether the client is picky. Which is not a system. That's just me vibing.
+
+Marcus Williams  11:22
+Did you just say vibing?
+
+Lisa Chen  11:24
+I have a teenager. The language is contagious.
+
+Marcus Williams  11:28
+Fair. But yeah, I think collaborative is better. Because honestly, some of the stuff Lisa reviews, she doesn't need to review. Like, if I'm sending a standard offer letter to a single-state client, fifteen employees, no special circumstances, I've done that a thousand times. I don't need Lisa to look at it. But I still send it to her because I'm like, what if this is the one time I missed something? And then she's got forty-seven things in her review queue because all of us are doing the same thing.
+
+Lisa Chen  11:55
+Forty-seven is not an exaggeration, by the way. I counted last week.
+
+Priya Sharma  12:00
+Yeah, and from my perspective, I would really love clear guidelines. Because right now I send literally everything to Lisa. Everything. And I know that's not sustainable, and I feel bad about it, but I genuinely don't know where the line is. Like, I've been here seven months now. I can handle a basic employee termination question for a single-state client. I know I can. But there's this voice in my head that's like, what if this is different somehow, and then I send it to Lisa anyway.
+
+Lisa Chen  12:28
+And the thing is, Priya, you're right to be cautious. I'd rather you over-escalate than under-escalate. But we need to find a middle ground because the current system of everything-goes-through-Lisa is clearly not working. I'm drowning.
+
+Sarah Mitchell  12:42
+Okay so what I'm hearing is collaborative. Here's what I'm thinking for the framework. We'd have three tiers. Tier one is handle independently, these are the routine situations where a consultant can just go. Tier two is document and spot-check, so you handle it but you log what you did and Lisa randomly reviews a sample. And tier three is requires Lisa's review before it goes to the client. And then we'd map specific scenarios to each tier.
+
+Lisa Chen  13:08
+Oh, I like the spot-check idea. That's smart. Because it means I'm not reviewing everything, but people also know that their work might get reviewed, so they're not just winging it.
+
+Marcus Williams  13:18
+Yeah, that's like the compliance audit approach. You don't audit every transaction, you audit a sample. That actually makes a lot of sense.
+
+Priya Sharma  13:25
+And can we have like examples? Like, not just categories but specific scenarios? Because I think the thing that would help me most is being able to look at a list and see, okay, client asking about termination procedures in a single state, tier one. Client asking about multi-state overtime exemptions for a construction company, tier three. That kind of thing.
+
+Sarah Mitchell  13:43
+Absolutely. The scenario mapping is the most important part. We'll make it really concrete. Okay, I think I want to do this as a separate working session rather than trying to knock it out over email. Can we schedule about an hour sometime next week, maybe Thursday, to build it out together?
+
+Lisa Chen  14:00
+Thursday afternoon works for me. After two.
+
+Marcus Williams  14:03
+Same.
+
+Priya Sharma  14:04
+I have a client call at two thirty but I could do three?
+
+Sarah Mitchell  14:08
+Let's do three on Thursday then. I'll come with a draft framework based on what I'm learning from the content audit, and we'll refine it together. Okay, I think that covers my questions. Let me just do a quick recap of action items so nobody can claim they didn't hear me. Lisa, you're sending me access to Marcus's construction drive and the wage tracking spreadsheet. Marcus, we've got the construction knowledge capture session on Wednesday at nine thirty, and Lisa is sitting in on that. Thursday at three we're all meeting to build out the escalation framework collaboratively. And in the meantime I'm continuing the content audit in the Drive, ignoring the Archive 2021 folder and whatever ancient stuff is in David's old drive.
+
+Lisa Chen  14:52
+Sounds perfect. Oh, one more thing. When you're in the Drive, you might see a bunch of folders that start with the word Test. Those are mine. I was trying to reorganize stuff last year and I created some test folders and then, you know, never finished. So those are just me failing at organization in real time.
+
+Sarah Mitchell  15:08
+Ha. Got it. I'll note those in the audit but I won't judge.
+
+Lisa Chen  15:12
+You can judge a little. It's fine.
+
+Marcus Williams  15:15
+I'm excited about this. I know I keep saying that but genuinely, we've been talking about fixing this for so long. It feels like it's actually happening now.
+
+Priya Sharma  15:22
+Same. Especially the escalation thing. That's going to make such a difference for me.
+
+Sarah Mitchell  15:27
+Good. All right, I'll send calendar invites for Wednesday and Thursday today. Talk to you all soon.
+
+Lisa Chen  15:33
+Thanks Sarah. Bye everyone.
+
+Marcus Williams  15:35
+Later.
+
+Priya Sharma  15:36
+Bye!
+
+Transcribed by https://otter.ai

@@ -1,0 +1,147 @@
+Truepoint HR Solutions — Discovery Interview
+January 13, 2025
+Duration: 14 minutes 35 seconds
+Speakers: Lisa Chen, Marcus Williams, Priya Sharma, Sarah Mitchell
+
+Lisa Chen  0:01
+Okay, so I think we're recording now. Can you guys hear me okay? Marcus, Priya?
+
+Marcus Williams  0:06
+Yeah, I'm good. Hey Sarah.
+
+Sarah Mitchell  0:08
+Hey everyone. So thanks for taking the time today. I know you're all busy. Like I mentioned in the email, we're doing a discovery session to understand how knowledge flows at Truepoint right now, what's working, what's not, and where we think AI could help. Lisa, maybe we start with you since you've got the broadest view of the operation?
+
+Lisa Chen  0:28
+Sure, yeah. So I mean, the biggest thing, and Marcus and Priya will back me up on this, is that I am the bottleneck. Like, I don't want to be, but I am. On any given day I'm getting, I don't know, twelve to fifteen Slack messages or texts from consultants asking me things like, how did we handle the overtime exemption thing for that restaurant group in Raleigh? Or, what's our standard approach when a construction client doesn't have an I-9 process? And I know the answers because I've been doing this for eleven years, but none of it is written down in any way that's actually findable.
+
+Sarah Mitchell  1:08
+And when you say not findable, what does that look like? Like, where does the information live right now?
+
+Lisa Chen  1:14
+Oh god, okay so. We have a Google Drive that started pretty organized back in 2014 when it was just me and David. And then over the years, as we grew, everybody kind of made their own folders, duplicated things, renamed things. So now we've got, I don't even know, probably four hundred plus templates in there. And some of them are the same template but with different state headers, and some are older versions that never got archived, and some are in like three different folders. Marcus, you deal with this more than anyone, what's your experience?
+
+Marcus Williams  1:52
+Yeah, it's a mess. I mean, I've been here five years, so I kind of know where most things are, but it's like institutional memory at this point. Like, I know that the North Carolina employee handbook template that's actually current is in the folder called HR Templates 2023, not the one called Client Templates, even though there's also a version in Client Templates that's from 2021 and has the wrong minimum wage in it. But Priya wouldn't know that, right? A new consultant wouldn't know that.
+
+Priya Sharma  2:25
+Oh, I definitely didn't know that. I literally used the wrong one for like my first three weeks. Nobody caught it because it looked right, you know? It had the Truepoint header and everything. It wasn't until Lisa happened to review one of my handbooks and was like, wait, this isn't the right template. And I was like, well, it was in the templates folder, so.
+
+Lisa Chen  2:48
+And that's, I mean, that's the compliance risk right there that keeps me up at night. Because if Priya had sent that to a client without me reviewing it, that client would have had incorrect minimum wage information in their employee handbook. And that's, I mean, that's a liability issue. That's not just an inconvenience.
+
+Sarah Mitchell  3:08
+Yeah, that's a big deal. So let me dig into the day-to-day a bit more. Marcus, you're a senior consultant. Walk me through a typical Monday. Like, what does your morning look like and where do knowledge gaps show up?
+
+Marcus Williams  3:22
+Okay so Monday morning, first thing I do is check my client list for the week. I've got about fifteen active clients. Maybe eight of those I'm talking to on any given week. So I'll look at what's coming up, any compliance deadlines, any open projects. And then usually within the first hour I've already got to go look something up. Like today, before this call, I had a client, a dental practice in South Carolina, asking about whether they need to update their harassment policy because of some new state guidance. And I know we dealt with something similar for a client in North Carolina last year, but I couldn't remember the details. So I Slacked Lisa.
+
+Lisa Chen  4:02
+And I was in a client meeting, so I didn't see it for two hours.
+
+Marcus Williams  4:06
+Right, so I'm sitting there either waiting or I'm going to try to find it myself. And finding it myself means I'm going into the drive, searching, opening five or six documents, reading through them to see if any of them are what I'm looking for. It's probably, I don't know, thirty to forty minutes of digging around before I either find what I need or give up and wait for Lisa.
+
+Sarah Mitchell  4:29
+And Priya, you've been at Truepoint for how long now?
+
+Priya Sharma  4:33
+Seven months. So I'm past the initial onboarding but I still feel like I'm learning something new every day. Honestly, the first five months were really rough. And it wasn't because people weren't helpful, everyone here is great. It's just that there's so much institutional knowledge that only exists in people's heads. Like, I didn't know that we handle restaurant clients differently than construction clients when it comes to overtime calculations. There's no document that says that. I had to learn it by making a mistake and then Lisa correcting me.
+
+Sarah Mitchell  5:08
+How many mistakes would you say you made in those first few months that were directly related to not having access to documented knowledge?
+
+Priya Sharma  5:17
+Probably, I mean, real mistakes? Maybe eight or ten. Not all of them went to clients, thankfully. But things like using the wrong template, not knowing that we have a specific process for construction clients who work across state lines, not understanding that when Lisa says to use the standard offer letter she means the one in the 2023 folder not the one in, you know, the one that comes up first when you search offer letter in the drive.
+
+Lisa Chen  5:46
+And the thing is, every one of those mistakes costs time. Either my time to catch and correct it, or the consultant's time to redo it, or worst case, a client sees something that's not right and we have to do damage control. I estimated once that I spend probably ten to twelve hours a week just answering internal questions. That's ten to twelve hours I could be billing, or, you know, actually working on strategic stuff for the business.
+
+Sarah Mitchell  6:12
+Ten to twelve hours is significant. Let me ask about the cross-coverage situation. I know that was one of the pain points that came up. What happens when someone's out and another consultant needs to cover their clients?
+
+Marcus Williams  6:25
+Oh man, that's the worst. So like, last month Priya was out sick for a few days, and I had to cover her clients. And I'm looking at her client list and I don't, I mean, I know some of them because we've talked about them in team meetings, but I don't know the specifics. Like, I don't know that her restaurant client in Asheville has a specific arrangement where we only handle their compliance stuff and not their benefits, because they have a separate benefits broker. And I don't know that her tech startup client is in the middle of switching from a PEO to managing their own HR. So I'm either scrambling through email threads trying to piece together the context, or I'm, again, calling Lisa.
+
+Priya Sharma  7:08
+And it goes both ways. When Marcus was on vacation in December, I had to cover two of his construction clients, and I had no idea about the prevailing wage stuff for government contracts. That's like a whole thing that I didn't even know was a thing. I spent probably three hours just trying to understand what I was supposed to be doing before I could even start actually doing it.
+
+Lisa Chen  7:30
+And we've lost clients over this, to be honest. Not a ton, but I can think of at least two situations where a client felt like they weren't getting the level of service they expected because the covering consultant didn't have enough context. And, you know, these are small business owners. They're paying us because they don't want to deal with HR headaches. If they feel like they're explaining their situation over and over to different people, they start wondering why they're paying us.
+
+Sarah Mitchell  7:58
+That's really helpful context. Let me shift to the client-facing questions. You mentioned that consultants spend about twenty percent of billable time on recurring client questions. Can you give me some examples of what those questions look like?
+
+Marcus Williams  8:14
+Yeah, so the big ones are things like, what do I need to do to terminate an employee in North Carolina? Or, do I need to offer COBRA if I have twelve employees? Or, what's the difference between exempt and non-exempt? Like, these are questions that we answer every single week for different clients, and every time we're kind of, I wouldn't say starting from scratch, but we're definitely not just pointing to a resource and saying here you go. We're writing out a custom response or getting on a call and explaining it.
+
+Lisa Chen  8:47
+And the nuance is that the answer changes by state, by company size, by industry sometimes. So it's not as simple as having one FAQ document. Like, the COBRA question, the answer is completely different if you're in North Carolina versus South Carolina, and different again if you're a restaurant with tipped employees versus a construction company. So we kind of have to, every time we answer it, we're synthesizing from multiple sources.
+
+Sarah Mitchell  9:15
+Right. So context-dependent answers. Got it. Priya, from a newer consultant perspective, what are the questions you find yourself asking most often?
+
+Priya Sharma  9:25
+Honestly, it's like, what's the process for X? Like, what's our process for onboarding a new client? What's the checklist for a compliance audit? How do we handle it when a client asks us to do something that's outside our scope? And also just like, who do I talk to about this? Because sometimes it's Lisa, sometimes it's Marcus for construction stuff, sometimes it's our payroll person. And there's no like directory or guide that says, for this type of question go to this person or look in this place.
+
+Sarah Mitchell  9:58
+Let me ask about the template situation specifically, because that came up a lot. Lisa, how many templates would you estimate are in the drive right now?
+
+Lisa Chen  10:07
+Oh, I mean, if you count every version, every duplicate, every state variation, we're probably looking at four hundred to five hundred documents. The actual unique, current templates are probably more like a hundred and fifty. But good luck figuring out which hundred and fifty those are. I've been meaning to do a cleanup for literally three years. We did a partial one in 2022 and kind of got halfway through and then got busy and stopped.
+
+Marcus Williams  10:34
+And the naming conventions are all over the place. Some things are named by state, some by client type, some by the year they were created, some by the consultant who made them. So you might have, you know, NC Employee Handbook Template in one folder, and then Employee Handbook North Carolina 2023 in another folder, and they're actually the same document but with slightly different formatting.
+
+Sarah Mitchell  10:58
+And when a consultant needs a template, what's the current process?
+
+Marcus Williams  11:03
+Search the drive and pray. I mean, honestly. You search for what you think it might be called, you open a few results, you compare them to see which one looks most current, and if you're not sure, you ask Lisa. Or if Lisa's not available, you just go with your best guess, which, as Priya can attest, doesn't always work out.
+
+Lisa Chen  11:25
+What I really wish we had is something where you could just say, I need the employee handbook template for a restaurant client in South Carolina with under fifty employees, and it would just give you the right one. Instead of having to know that the right one is in the subfolder inside the subfolder inside the other folder and it's the one with 2023 in the file name but not the one with v2 in the file name because v2 was actually an older version that someone mislabeled.
+
+Sarah Mitchell  11:55
+That's exactly the kind of use case we're going to be building for. Let me ask one more question and then we can wrap. If you could wave a magic wand and have the perfect system tomorrow, what would it do for each of you? Marcus, you first.
+
+Marcus Williams  12:10
+For me, it would be like having Lisa in my pocket but without bothering Lisa. Like, I want to be able to ask a question about how we handled something for a client, or what the compliance rule is in a specific state, and just get an answer right away. With the source, like, tell me where you found that. Because I still need to verify before I send something to a client.
+
+Priya Sharma  12:33
+For me, it's the onboarding thing. I wish I'd had something in my first month that could have told me, here's how Truepoint works, here's what we do for each type of client, here's the common situations you'll encounter and how we handle them. Instead of learning everything through trial and error and bothering Lisa. And also just like a way to get up to speed on a client quickly when I need to cover for someone.
+
+Lisa Chen  12:58
+And for me, I just want my time back. I want to be able to trust that when someone has a question, they can find the answer without me. And I want to know that the templates they're using are the right ones. That's it. Like, I don't need anything fancy. I just need the knowledge that's in my head and in these messy files to be organized and accessible.
+
+Sarah Mitchell  13:20
+This is incredibly helpful, all of you. Thank you. So just to summarize what I'm hearing, there are really four or five core problems. The tribal knowledge bottleneck where Lisa is the single point of failure for institutional knowledge. The onboarding ramp time, five to six months is way too long for new consultants to be independent. Template chaos with hundreds of documents and no reliable way to find the current correct version. Cross-coverage gaps where covering a colleague's clients means starting from scratch. And repetitive client Q&A that's eating into billable time because there's no centralized source for context-dependent answers.
+
+Lisa Chen  14:02
+Yeah, that's it. That's exactly it.
+
+Sarah Mitchell  14:05
+Great. What I'm going to do next is pull together a content audit plan. I'll need access to the Google Drive to do an inventory of what's there. And then from that we'll figure out what gets kept, what gets updated, what gets archived, and what's missing. Sound good?
+
+Lisa Chen  14:20
+Sounds great. I'll send you the drive access today.
+
+Marcus Williams  14:23
+This is exciting. I feel like we've been talking about fixing this for years.
+
+Priya Sharma  14:27
+Same. I'm really looking forward to this.
+
+Sarah Mitchell  14:30
+Awesome. Talk soon, everyone.
+
+Lisa Chen  14:32
+Thanks Sarah. Bye everyone.
+
+Marcus Williams  14:34
+Bye.
+
+Priya Sharma  14:35
+Bye.
+
+Transcribed by https://otter.ai
