@@ -16,6 +16,16 @@ Use this template when you need to document a client's storage structure. This c
 
 ---
 
+## File Naming Convention
+
+```
+[client-short-name]-storage-inventory-[YYYY-MM-DD].md
+```
+
+**Example:** `acme-storage-inventory-2024-06-15.md`
+
+---
+
 ## How to Document
 
 Walk through the client's storage and record:
@@ -45,7 +55,7 @@ Produce a single markdown file:
 
 *Snapshot of the client's file storage taken during content audit. This documents the current state of the client's shared drive or document repository as found during discovery.*
 
-**Source method:** [How this inventory was created — pick one]
+**Source method:** [How this inventory was created — check all that apply]
 - [ ] Direct connection via MCP connector (Google Drive, SharePoint, etc.)
 - [ ] Screenshots provided by client
 - [ ] File/folder list exported by client

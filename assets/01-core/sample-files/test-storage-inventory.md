@@ -3,7 +3,7 @@
 *Snapshot of Truepoint HR Solutions' shared Google Drive taken during content audit. Documents the current state of storage as found during discovery.*
 
 **Source method:**
-- [x] File/folder list exported by client (google-drive-inventory.md)
+- [x] File/folder list exported by client
 - [x] Sample client documents reviewed directly
 - [x] Stakeholder interviews (discovery + follow-up transcripts)
 

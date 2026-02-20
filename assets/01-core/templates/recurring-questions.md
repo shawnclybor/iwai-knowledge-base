@@ -17,6 +17,16 @@ Use this template after processing at least one stakeholder interview transcript
 
 ---
 
+## File Naming Convention
+
+```
+[client-short-name]-recurring-questions-[YYYY-MM-DD].md
+```
+
+**Example:** `acme-recurring-questions-2024-06-15.md`
+
+---
+
 ## How to Extract Questions
 
 Read through each transcript and identify:

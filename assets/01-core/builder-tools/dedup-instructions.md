@@ -61,7 +61,7 @@ Each piece of information should live in exactly one KB file. When the same topi
 1. **Decide the primary home.** Put the detailed content in the KB file where it's most relevant.
 2. **Cross-reference from other files.** Other KB files that touch the same topic should point to the primary file rather than duplicating the content.
 
-After completing the source assessment (see claude.md, Step 1), create a primary home assignment table mapping topics to their primary KB file. This prevents duplication across the deliverables.
+After completing the source assessment (see `instructions.md`, Step 3), create a primary home assignment table mapping topics to their primary KB file. This prevents duplication across the deliverables.
 
 ---
 
@@ -88,7 +88,7 @@ Content audits frequently surface mislabeled files — documents whose filenames
 - Use the **correct** description of what the file actually contains, not what the filename says
 - Note the mislabel so it can be corrected: `[NOTE: File "filename.ext" is actually [correct description], not what the filename suggests]`
 
-Check the file inventory and Drive inventory notes for any mislabeled files identified during the audit. If additional mislabels are discovered during KB generation, flag them the same way.
+Check the storage inventory and content audit notes for any mislabeled files identified during the audit. If additional mislabels are discovered during KB generation, flag them the same way.
 
 ---
 

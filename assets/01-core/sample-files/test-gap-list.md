@@ -166,7 +166,7 @@ Each gap includes:
 
 ## Sources
 
-- test-transcript-discovery-2024-01-01.md
-- test-transcript-followup-2024-01-01.md
+- test-transcript-discovery-2025-01-13.md
+- test-transcript-followup-2025-01-20.md
 - test-storage-inventory.md
 - test-content-audit.md

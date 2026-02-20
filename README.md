@@ -37,7 +37,6 @@ assets/
 │   │   ├── recurring-questions.md   # Step 2d: transcripts → question list
 │   │   └── gap-list.md             # Step 2e: questions + inventory → gap analysis
 │   └── sample-files/                # Pre-built exemplars of template outputs
-│       ├── google-drive-inventory.md
 │       ├── test-storage-inventory.md
 │       ├── test-content-audit.md
 │       ├── test-recurring-questions.md

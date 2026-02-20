@@ -2,8 +2,9 @@
 
 *Document-level assessment of files found in the storage inventory. Each file is tagged Keep / Update / Archive / Delete to govern how it's used during knowledge base generation.*
 
-**Audit date:** [DATE UNKNOWN — PLACEHOLDER]
+**Audit date:** 2025-01-20
 **Storage inventory used:** test-storage-inventory.md
+**Transcripts used:** test-transcript-discovery-2025-01-13.md, test-transcript-followup-2025-01-20.md
 **Auditor:** Sarah Mitchell / Truepoint HR Solutions
 
 ---

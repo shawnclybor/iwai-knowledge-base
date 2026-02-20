@@ -38,7 +38,7 @@ List what you find. If raw transcripts or storage access are missing, tell the c
 - Recurring question lists
 - Gap analyses
 
-If any of these exist and are current, verify them and skip the corresponding processing step in Step 2.
+If any of these exist and are current, verify them and skip the corresponding processing step in Step 2. If existing files appear to be drafts or test artifacts (e.g., "test-" prefix, placeholder dates), ask the consultant before relying on them.
 
 ---
 
@@ -110,8 +110,9 @@ For each approved KB file:
 2. Apply `formatting-rules.md` for structure, metadata, and citations
 3. Apply `dedup-instructions.md` to resolve any conflicts across sources
 4. Produce the complete file content
-5. Save the file to the designated save location
-6. Provide a brief generation summary: sources used, gaps flagged, dedup decisions made
+5. Save the file to the designated save location (see `claude.md`, Output Rule 8)
+6. Verify the file is accessible to the consultant before confirming it was saved
+7. Provide a brief generation summary: sources used, gaps flagged, dedup decisions made
 
 Generate one file at a time unless asked to batch. After each file, confirm it was saved and ask if the consultant wants to revise before moving to the next.
 

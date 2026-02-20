@@ -41,7 +41,7 @@ Use consistent heading levels across all files:
 #### Detail (H4) — use sparingly, only when a subsection needs further breakdown
 ```
 
-Do not skip heading levels (no jumping from H2 to H4). Do not use H1 for anything other than the file title.
+Do not skip heading levels (no jumping from H2 to H4). Do not use H1 for anything other than the file title. Do not reuse the H1 title as an H2 section name.
 
 ---
 
@@ -78,7 +78,7 @@ When content is specific to a particular industry, client segment, or category, 
 **Industry:** [Tag 1] | [Tag 2] | General
 ```
 
-Place tags at the beginning of a section or subsection that is category-specific. Content that applies universally uses the `General` tag or no tag.
+Place tags at the beginning of a section or subsection that is category-specific. Content that applies universally uses the `General` tag or no tag. If the section heading already names the industry or category, the tag is redundant and can be omitted.
 
 ---
 
@@ -177,6 +177,7 @@ Always reference the specific section, not just the file name.
 ## File Length Guidelines
 
 - Aim for 500–1500 words per KB file for operational and reference files
+- Multi-topic reference files (e.g., state compliance across multiple jurisdictions) may exceed this when splitting would hurt usability
 - Educational or onboarding files may be longer (up to 2500 words)
 - If a file exceeds 2500 words, consider splitting it into sub-files
 - Shorter is better if completeness is maintained — Claude retrieves more reliably from focused, well-structured files than from sprawling documents

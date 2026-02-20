@@ -18,6 +18,16 @@ Use this template after completing the storage inventory. The content audit revi
 
 ---
 
+## File Naming Convention
+
+```
+[client-short-name]-content-audit-[YYYY-MM-DD].md
+```
+
+**Example:** `acme-content-audit-2024-06-15.md`
+
+---
+
 ## KUAD Tags
 
 Assign one tag to each document:

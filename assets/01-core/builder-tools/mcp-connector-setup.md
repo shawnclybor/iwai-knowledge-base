@@ -30,13 +30,13 @@ This section only applies if the connector is not yet configured.
 
 ### Why a Connector Is Required
 
-This builder project is designed to be lightweight and reusable. Only the builder tools (claude.md, formatting-rules.md, dedup-instructions.md, and this file) are uploaded to the project. The client's raw discovery materials stay in the client's cloud storage.
+This builder project is designed to be lightweight and reusable. Only the builder tools and processing templates are uploaded to the project. The client's raw discovery materials stay in the client's cloud storage.
 
 A connector is how Claude accesses those materials. Without it, there's nothing to process.
 
 ### Google Drive
 
-**Always use Claude's native Google Drive connector.** Do not use Zapier, third-party integrations, or any other workaround for Google Drive access. If Zapier-based Google Drive tools exist in the project, ignore them for this purpose.
+**For reading client files, always use Claude's native Google Drive connector.** Do not use Zapier or third-party integrations for reading — the native connector is faster and more reliable. (Zapier is used for *writing* files back to Drive — see "Saving Generated Files" below.)
 
 To add the native connector:
 
@@ -85,6 +85,16 @@ If no connector exists for the client's platform (or the connector requires a hi
 3. Prefer markdown, CSV, or plain text formats — Claude cannot read `.xlsx` files natively, so spreadsheets should be exported to CSV or copied into markdown before uploading
 
 This bypasses the connector-based workflow and makes the project harder to maintain, so use it only when a connector isn't available.
+
+---
+
+## Saving Generated Files
+
+Native connectors are read-only. To save output, use:
+
+- **Local computer:** Desktop Commander or filesystem MCP. Some have line-length limits — chunk large files if needed.
+- **Google Drive:** Zapier or other write-capable integration.
+- **Fallback:** Present as downloadable artifact if no write tool is available.
 
 ---
 

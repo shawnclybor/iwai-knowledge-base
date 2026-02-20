@@ -10,7 +10,7 @@ Use this template after you have:
 
 - A compiled recurring questions list (see `recurring-questions.md`)
 - A storage/file inventory showing what documentation currently exists
-- Optionally, a document inventory with KUAD tags and/or sample client documents
+- Optionally, a content audit with KUAD tags and/or sample client documents
 
 ---
 
@@ -18,8 +18,18 @@ Use this template after you have:
 
 - **Recurring questions list** — The compiled output from `recurring-questions.md`
 - **Storage/file inventory** — The client's folder and file structure
-- **Document inventory with KUAD tags** (if available) — Provides status information about existing documents
+- **Content audit with KUAD tags** (if available) — Provides status information about existing documents
 - **Sample client documents** (if available) — Helps assess whether existing docs actually answer the questions
+
+---
+
+## File Naming Convention
+
+```
+[client-short-name]-gap-list-[YYYY-MM-DD].md
+```
+
+**Example:** `acme-gap-list-2024-06-15.md`
 
 ---
 
@@ -96,7 +106,7 @@ Each gap includes:
 - [List discovery files used to compile this gap list]
 - [e.g., stakeholder-interview-transcript-YYYY-MM-DD.md]
 - [e.g., storage-inventory.md]
-- [e.g., document-inventory.xlsx]
+- [e.g., content-audit.md]
 ```
 
 ---
