@@ -9,8 +9,8 @@ Lesson slides and case study narratives live in the attached project knowledge b
 | Folder | Lesson | Status |
 |--------|--------|--------|
 | `00-intro/` | Introduction — background research, context-setting | Slides complete; research guide in repo |
-| `01-core/` | Core Workflow — building a KB from raw client materials | In progress (builder tools + templates done, deliverables not yet generated) |
-| `02-powerup/` | Power-Up — RAG pipeline integration | Planning stage (pipeline plan + diagram in repo) |
+| `01-core/` | Core Workflow — building a KB from raw client materials | Complete |
+| `02-powerup/` | Power-Up — RAG pipeline integration | Complete |
 | `03-advanced/` | Advanced — future topics | Not started |
 
 ## Repo Structure
@@ -44,8 +44,24 @@ assets/
 │       ├── test-transcript-discovery-2025-01-13.md
 │       └── test-transcript-followup-2025-01-20.md
 ├── 02-powerup/                      # Lesson 2: Power-Up (RAG)
-│   ├── rag-pipeline-plan.md
-│   └── RAG setup.png
+│   ├── README.md                    # Lesson overview + folder structure
+│   ├── lesson-flow.md               # Visual student journey diagram
+│   ├── rag-pipeline-plan.md         # Architecture decisions
+│   ├── RAG setup.png                # Pipeline diagram (image)
+│   ├── .claude/                     # Claude Code skills + agents
+│   │   ├── skills/setup-rag/        # /setup-rag — guided setup
+│   │   ├── skills/ingest/           # /ingest — run pipeline
+│   │   ├── skills/calibrate/        # /calibrate — test retrieval
+│   │   └── agents/rag-reviewer.md   # Quality review subagent
+│   ├── builder-tools/               # Lesson workflow
+│   │   └── instructions.md
+│   ├── migrations/                  # Supabase schema (3 SQL files)
+│   ├── mcp-setup/                   # MCP connector config
+│   ├── pipeline/
+│   │   ├── templates/               # Step-by-step guides (5 stages)
+│   │   └── scripts/                 # Python scripts (ingest, chunk, embed)
+│   ├── source-files/                # 11 files: md, csv, docx, pdf
+│   └── sample-files/                # Expected outputs for verification
 └── 03-advanced/                     # Lesson 3: Advanced (empty)
 ```
 

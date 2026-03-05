@@ -29,14 +29,16 @@ See `README.md` for project overview, lesson structure, and repo layout.
 
 ### Lesson 1 (Core)
 
-- **Deliverable KB files** — Run raw files through builder tools to generate ~10 KB files across 3 workflows
-- **`deliverables/` folder** — Create `01-core/deliverables/` to hold generated KB files
-- **Second claude.md** — Client-facing system prompt for the deliverable project (Project B)
-- **Shared assets** — Master claude.md template, style guide, test query bank (20-30 questions per workflow), content update protocol
+Complete.
 
 ### Lesson 2 (Power-Up)
 
-- Additional RAG-related lesson materials beyond the existing plan and diagram
+Complete. All lesson materials built:
+- Pipeline scripts (ingest, chunking, embed), templates, and migrations
+- Source files in all 4 formats (md, csv, docx, pdf)
+- Claude skills (/setup-rag, /ingest, /calibrate) and rag-reviewer agent
+- Builder tools (claude.md, instructions.md)
+- Lesson flow diagram and comprehensive READMEs
 
 ### Lesson 3 (Advanced)
 
