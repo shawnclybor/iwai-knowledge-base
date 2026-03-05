@@ -1,0 +1,9 @@
+state,coverage_threshold,insurance_type,rate_authority,avg_rate_per_100,key_notes
+North Carolina,3+ employees,Compulsory,NC Rate Bureau,1.42,"Must carry coverage if 3+ employees. Penalties for non-compliance include fines up to $100/day. Claims filed through NC Industrial Commission."
+South Carolina,4+ employees,Compulsory,SC Workers Compensation Commission,1.38,"Threshold is 4+ regular employees. Agricultural employers with fewer than 4 employees are exempt. Second Injury Fund surcharge applies."
+Virginia,2+ employees (non-casual),Compulsory,NCCI (with state modifications),1.51,"Virginia uses NCCI rates with state-specific modifications. Covers part-time employees. Executive officers may elect out with written waiver."
+Georgia,3+ employees,Compulsory,NCCI,1.65,"Threshold is 3+ regular employees. Farm laborers working fewer than 30 days excluded. Employer must post notice of coverage."
+Tennessee,5+ employees,Compulsory,NCCI,1.28,"Construction employers: 5+ employee threshold includes subcontractors without their own coverage. Penalties for misrepresentation of payroll."
+Florida,4+ employees (non-construction) / 1+ (construction),Compulsory,NCCI (with state deviations),1.72,"Construction industry: 1 employee triggers coverage. Non-construction: 4+ employees. Officers of corporations automatically covered. Exemptions require filing."
+Maryland,1+ employees,Compulsory,NCCI,1.55,"Virtually all employers must carry coverage from the first employee. Administered by Workers Compensation Commission. No exemptions for small employers."
+Pennsylvania,1+ employees,Compulsory,PA Compensation Rating Bureau,2.01,"Highest threshold — all employers with 1+ employees. Executive officers included unless they opt out. Construction class codes carry higher rates."
