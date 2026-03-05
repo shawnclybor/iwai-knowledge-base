@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python pipeline/scripts/*)",
+      "Bash(pip install*)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "mcp__e54affaf-c4c2-4f1c-b89b-e67e6e697d58__execute_sql",
+      "mcp__e54affaf-c4c2-4f1c-b89b-e67e6e697d58__apply_migration",
+      "mcp__e54affaf-c4c2-4f1c-b89b-e67e6e697d58__list_tables"
+    ]
+  }
+}
