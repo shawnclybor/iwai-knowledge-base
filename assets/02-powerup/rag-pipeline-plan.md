@@ -3,7 +3,7 @@
 **Date:** February 11, 2026
 **Project:** iwai-knowledge-base
 **Supabase Project:** IWAI Lessons (`bihjdegxbsdpekzclyxo`)
-**Status:** Plan — awaiting approval
+**Status:** Plan — open questions resolved, ready for implementation
 
 ---
 
@@ -12,12 +12,12 @@
 Build a reusable RAG ingestion pipeline that:
 
 1. Accepts **docx, pdf, md, and csv** files from a source folder
-2. Uses **Docling MCP** to convert documents into a normalized format (markdown)
+2. Uses **lightweight Python libraries** to convert documents into a normalized format (markdown)
 3. Applies **dynamic chunking** — selecting the best strategy per document type
 4. Upserts results into **Supabase** across two tables: `file_metadata` and `chunks`
 5. Provides a **retrieval calibration** layer for tuning search quality
 
-**Key improvement over KnoPro chatbot approach:** structured 2-table schema, Docling-based conversion (vs manual prep), dynamic chunking (vs one-size-fits-all), hash-based change detection, and built-in calibration harness.
+**Key improvement over KnoPro chatbot approach:** structured 2-table schema, automated conversion (vs manual prep), dynamic chunking (vs one-size-fits-all), hash-based change detection, and built-in calibration harness.
 
 ---
 
@@ -39,7 +39,7 @@ Build a reusable RAG ingestion pipeline that:
          │
          ▼
 ┌─────────────────────┐
-│   DOCLING MCP       │
+│   DOC CONVERSION    │
 │  • Convert to MD    │
 │  • Extract structure│
 │  • Preserve tables  │
@@ -233,15 +233,12 @@ $$ LANGUAGE sql STABLE;
   - **Hash not found** → New file, insert row with `status='processing'`
 - Record file_name, file_path, file_type, file_size
 
-### Step 2: Docling Conversion
+### Step 2: Document Conversion
 
-- Call `convert_document_into_docling_document(source=file_path)` for each file
-- Export to markdown via `export_docling_document_to_markdown(document_key)`
-- For **CSV files**: two options —
-  - Option A: Docling converts to markdown table
-  - Option B: Custom handler — read with pandas, format rows as natural language
-- Store the Docling `document_key` for downstream operations
-- Extract structural info via `get_overview_of_document_anchors(document_key)` to inform chunking
+- Run `convert.py` to convert each file to normalized markdown
+- Uses `python-docx` for `.docx`, `pdfplumber` for `.pdf`, stdlib `csv` for `.csv`, direct read for `.md`
+- Extracts heading structure, table formatting, page boundaries
+- For **CSV files**: converts to markdown table with column headers
 
 ### Step 3: Chunking Router
 
@@ -249,7 +246,7 @@ Analyzes the converted document and selects the best chunking strategy:
 
 | File Type | Primary Strategy | Fallback | Notes |
 |-----------|-----------------|----------|-------|
-| **PDF** | Document-structure (headings/sections from Docling) | Recursive with overlap | Docling preserves heading hierarchy, tables |
+| **PDF** | Document-structure (headings/sections) | Recursive with overlap | pdfplumber preserves text and tables |
 | **DOCX** | Document-structure (heading levels) | Recursive with overlap | Word docs typically have clear H1/H2/H3 |
 | **MD** | Header-based splitting (## and ###) | Recursive with overlap | Already structured |
 | **CSV** | Row-group chunking | Per-row with header prepend | Each chunk = N rows with column context |
@@ -262,7 +259,7 @@ Analyzes the converted document and selects the best chunking strategy:
 **Chunk metadata** captured per chunk:
 - `section_heading` — nearest heading above the chunk
 - `chunk_index` — position in document
-- `page_number` — if available from Docling
+- `page_number` — if available from PDF conversion
 - `hierarchy_level` — heading depth (1, 2, 3...)
 - `has_table` — boolean, if chunk contains tabular data
 
@@ -326,7 +323,7 @@ The "tuning knobs" available after ingestion is complete:
 
 ### Phase 2: Ingestion Pipeline (Python)
 - [ ] File intake module (hash, dedup, metadata insert)
-- [ ] Docling MCP integration (convert + export to markdown)
+- [ ] Document conversion script (convert.py)
 - [ ] ChunkingRouter with per-type strategies
 - [ ] Embedding module (batch API calls)
 - [ ] Supabase upsert module (transactional batch insert)
@@ -347,16 +344,14 @@ The "tuning knobs" available after ingestion is complete:
 
 ---
 
-## 7. Open Questions
+## 7. Open Questions — Resolved
 
-These decisions should be made before implementation begins:
-
-1. **Embedding model** — OpenAI `text-embedding-3-small` (1536d, cheap) vs `text-embedding-3-large` (3072d, better) vs open-source?
-2. **Existing data** — Migrate the 184 rows in "IWAI Test Database" to the new schema, or start fresh?
-3. **Runtime** — Local Python script, Supabase Edge Function, or both?
-4. **CSV handling** — Row-per-chunk vs natural-language-summary chunks?
-5. **Re-ranking** — Add a cross-encoder re-ranker (e.g., Cohere rerank) or keep it simple initially?
-6. **Source folder** — Where will source documents live? Local filesystem, Google Drive, or Supabase Storage?
+1. **Embedding model** — `text-embedding-3-small` (1536d). Good balance of cost and quality for a lesson/demo KB.
+2. **Existing data** — Start fresh. The existing 184-row table (`IWAI Test Database`) uses a flat schema incompatible with the new 2-table design. Re-ingest from scratch.
+3. **Runtime** — Local Python script. The pipeline depends on Python libraries that aren't available in Deno-based Edge Functions. Retrieval stays in Supabase as SQL RPC functions.
+4. **CSV handling** — Deferred until source documents are finalized. Strategy will depend on what CSVs (if any) are included.
+5. **Re-ranking** — Skip for now. Cross-encoder re-ranking (e.g., Cohere Rerank) adds latency and cost. Note as an advanced optimization for students to explore later.
+6. **Source folder** — Source files live in the repo at `assets/02-powerup/source-files/`. Reuse Lesson 1 raw client files (`assets/01-core/raw-client-files/`) as primary input — this creates a natural lesson flow from "build the KB" to "make it searchable."
 
 ---
 
@@ -364,9 +359,9 @@ These decisions should be made before implementation begins:
 
 | Component | Tool | Notes |
 |-----------|------|-------|
-| Document conversion | Docling MCP | Handles all 4 file types → markdown |
+| Document conversion | python-docx, pdfplumber | Handles all 4 file types → markdown |
 | Chunking | Python (custom) | ChunkingRouter with per-type strategies |
-| Embedding | OpenAI API (TBD) | Batch embedding |
+| Embedding | OpenAI `text-embedding-3-small` | 1536d, batch embedding |
 | Vector store | Supabase pgvector | Already enabled on IWAI Lessons project |
 | Full-text search | PostgreSQL tsvector | Built into Supabase |
 | Pipeline orchestration | Python script | Could wrap in Edge Function later |
