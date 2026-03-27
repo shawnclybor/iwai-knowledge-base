@@ -1,0 +1,19 @@
+{
+  "name": "kb-search-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server wrapping Supabase hybrid search for knowledge base retrieval",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@supabase/supabase-js": "^2.0.0",
+    "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

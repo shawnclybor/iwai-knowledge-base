@@ -1,0 +1,77 @@
+[
+  {
+    "question": "What are the FMLA eligibility requirements?",
+    "expected_sources": ["fmla-policy-2023.md"],
+    "ground_truth": "Employees are eligible for FMLA leave if they have worked for the employer for at least 12 months and have at least 1,250 hours of service during the 12-month period."
+  },
+  {
+    "question": "Workers compensation requirements in North Carolina",
+    "expected_sources": ["workers-comp-state-reference.csv", "handbook-nc-current.md"],
+    "ground_truth": null
+  },
+  {
+    "question": "How should we classify subcontractors vs employees?",
+    "expected_sources": ["subcontractor-classification-memo.md"],
+    "ground_truth": null
+  },
+  {
+    "question": "What is the DOT drug testing policy for CDL drivers?",
+    "expected_sources": ["drug-testing-policy-dot.docx"],
+    "ground_truth": null
+  },
+  {
+    "question": "What are the new overtime salary thresholds for 2024?",
+    "expected_sources": ["dol-overtime-rule-2024.pdf"],
+    "ground_truth": null
+  },
+  {
+    "question": "What does the anti-harassment policy cover?",
+    "expected_sources": ["anti-harassment-policy-2024.md"],
+    "ground_truth": null
+  },
+  {
+    "question": "What is the onboarding process for new consultants?",
+    "expected_sources": ["onboarding-checklist-consultant.md"],
+    "ground_truth": null
+  },
+  {
+    "question": "What are the PTO policy details for unlimited time off?",
+    "expected_sources": ["pto-policy-unlimited.docx"],
+    "ground_truth": null
+  },
+  {
+    "question": "What does the EEOC harassment guidance say about employer liability?",
+    "expected_sources": ["eeoc-harassment-guidance-2024.pdf"],
+    "ground_truth": null
+  },
+  {
+    "question": "What items are on the I-9 audit checklist?",
+    "expected_sources": ["i9-audit-checklist.csv"],
+    "ground_truth": null
+  },
+  {
+    "question": "How does North Carolina handle workplace safety regulations?",
+    "expected_sources": ["handbook-nc-current.md"],
+    "ground_truth": null
+  },
+  {
+    "question": "What are the steps for properly classifying independent contractors?",
+    "expected_sources": ["subcontractor-classification-memo.md"],
+    "ground_truth": null
+  },
+  {
+    "question": "What types of leave are available under company policy?",
+    "expected_sources": ["fmla-policy-2023.md", "pto-policy-unlimited.docx"],
+    "ground_truth": null
+  },
+  {
+    "question": "What compliance training is required for new hires?",
+    "expected_sources": ["onboarding-checklist-consultant.md", "anti-harassment-policy-2024.md"],
+    "ground_truth": null
+  },
+  {
+    "question": "How do state workers comp requirements differ?",
+    "expected_sources": ["workers-comp-state-reference.csv"],
+    "ground_truth": null
+  }
+]
