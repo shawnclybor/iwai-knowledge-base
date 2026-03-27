@@ -42,4 +42,24 @@ Complete. All lesson materials built:
 
 ### Lesson 3 (Advanced)
 
-- Not yet scoped
+Complete. All lesson materials built:
+- MCP server (TypeScript, stdio transport) wrapping hybrid_search() and match_chunks() RPCs
+- Evaluation harness (Python + Langfuse + Ragas) with 15-query test dataset
+- Claude Code commands (/lesson-3:setup, /lesson-3:evaluate, /lesson-3:maintain)
+- kb-auditor agent for read-only quality audits
+- Query log migration (004), templates, sample files, builder tools
+
+## Lesson 3: Advanced — "Go Live"
+
+When the user says "run lesson 3" (or similar):
+
+0. Check L2 prerequisite:
+   - Query Supabase: chunks table has embedded rows, hybrid_search() function exists
+   - If not → "Lesson 2 must be completed first. The knowledge base needs to be indexed before it can be deployed."
+1. Check resume flags in `assets/03-advanced/.env`
+2. Route to first incomplete step:
+   - No .env / SETUP_COMPLETE=0 → `/lesson-3:setup`
+   - MCP_SERVER_READY=0 → Tell student to restart Claude Code, then verify MCP tools
+   - EVALUATION_COMPLETE=0 → `/lesson-3:evaluate`
+   - All complete → offer `/lesson-3:maintain` or re-run any step
+3. Read `assets/03-advanced/builder-tools/instructions.md` and begin

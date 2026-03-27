@@ -11,7 +11,7 @@ Lesson slides and case study narratives live in the attached project knowledge b
 | `00-intro/` | Introduction — background research, context-setting | Slides complete; research guide in repo |
 | `01-core/` | Core Workflow — building a KB from raw client materials | Complete |
 | `02-powerup/` | Power-Up — RAG pipeline integration | Complete |
-| `03-advanced/` | Advanced — future topics | Not started |
+| `03-advanced/` | Advanced — MCP server deployment + evaluation | Complete |
 
 ## Repo Structure
 
@@ -62,7 +62,46 @@ assets/
 │   │   └── scripts/                 # Python scripts (ingest, chunk, embed)
 │   ├── source-files/                # 11 files: md, csv, docx, pdf
 │   └── sample-files/                # Expected outputs for verification
-└── 03-advanced/                     # Lesson 3: Advanced (empty)
+└── 03-advanced/                     # Lesson 3: Advanced (Go Live)
+    ├── README.md                    # Lesson overview + prerequisites
+    ├── lesson-flow.md               # Visual student journey diagram
+    ├── builder-tools/
+    │   └── instructions.md          # 7-step workflow
+    ├── mcp-server/                  # TypeScript MCP server (stdio)
+    │   ├── package.json
+    │   ├── tsconfig.json
+    │   └── src/
+    │       ├── index.ts             # Entry point + startup validation
+    │       ├── tools/
+    │       │   ├── search-kb.ts     # search_kb: embed → search → rerank → log
+    │       │   └── list-sources.ts  # list_sources: query file_metadata
+    │       └── lib/
+    │           └── supabase.ts      # Supabase + OpenAI client init
+    ├── evaluation/                  # Python eval harness (Langfuse + Ragas)
+    │   ├── requirements.txt
+    │   ├── evaluate.py              # Runner: embed → search → generate → score
+    │   └── datasets/
+    │       └── truepoint-queries.json  # 15 test queries
+    ├── migrations/
+    │   └── 004_create_query_log.sql # query_log table + RLS
+    ├── templates/                   # Stage-specific briefings
+    │   ├── mcp-server-build.md      # Read before /lesson-3:setup
+    │   ├── evaluation-harness.md    # Read before /lesson-3:evaluate
+    │   └── maintenance-ops.md       # Read before /lesson-3:maintain
+    └── sample-files/
+        ├── sample-search-results.md
+        └── sample-evaluation-report.md
+
+.claude/
+├── commands/lesson-3/
+│   ├── setup.md                     # /lesson-3:setup
+│   ├── evaluate.md                  # /lesson-3:evaluate
+│   └── maintain.md                  # /lesson-3:maintain
+├── agents/
+│   └── kb-auditor.md                # Quality audit agent
+└── settings.json                    # Pre-approved permissions
+
+.mcp.json                            # MCP server config (kb-search + supabase)
 ```
 
 ## Lesson 1: Core Workflow
