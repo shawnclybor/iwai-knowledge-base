@@ -24,6 +24,23 @@ If the connector is set up but isn't returning expected files, check:
 
 ---
 
+## File Type Limitations
+
+Claude's built-in Google Drive connector **only reads Google-native formats** — Google Docs, Google Sheets, and Google Slides. It cannot read `.md`, `.pdf`, `.docx`, `.xlsx`, `.csv`, or any other uploaded file sitting in Drive, even if the file is accessible to the authenticated account.
+
+This means the Google Drive connector is best suited for when your client materials are already in Google Docs format. If the files in Drive are PDFs, Word documents, markdown, or other non-Google formats, you'll need one of these alternatives:
+
+| Approach | Best For | Notes |
+|----------|----------|-------|
+| **Direct upload to Claude** | Quickest fix for any file type | Drag and drop files into the chat or add as project knowledge. Claude reads `.md`, `.pdf`, `.docx`, `.csv`, and plain text natively. |
+| **Zapier MCP connector** | Reading non-Google files from Drive | Can interact with Drive files more flexibly than the built-in connector, including downloading and reading uploaded file types. |
+| **Convert to Google Docs** | Small number of files already in Drive | Open each file in Drive, copy the content into a new Google Doc. The native connector can then read it. |
+| **Claude Code (CLI)** | Technical users with files on their local machine | Reads any local file natively — no connector or conversion needed. |
+
+**Recommendation:** If your client's discovery materials are `.md` files (common for AI/KB work), the simplest path is direct upload to Claude. The Google Drive connector adds unnecessary friction for non-Google file types.
+
+---
+
 ## Setting Up the Connector
 
 This section only applies if the connector is not yet configured.
@@ -36,7 +53,7 @@ A connector is how Claude accesses those materials. Without it, there's nothing 
 
 ### Google Drive
 
-**For reading client files, always use Claude's native Google Drive connector.** Do not use Zapier or third-party integrations for reading — the native connector is faster and more reliable. (Zapier is used for *writing* files back to Drive — see "Saving Generated Files" below.)
+**For reading Google Docs, use Claude's native Google Drive connector.** It's fast and reliable for Google-native formats. However, it **cannot read non-Google file types** (`.md`, `.pdf`, `.docx`, etc.) — see "File Type Limitations" above for alternatives. (Zapier is used for *writing* files back to Drive — see "Saving Generated Files" below.)
 
 To add the native connector:
 

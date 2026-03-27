@@ -1,3 +1,11 @@
+# RAG Pipeline Builder — Power-Up Workflow
+
+## Lesson Context
+
+Read `README.md` in this directory for full lesson context — key concepts (RAG, embeddings, chunking, hybrid search), case study details, pipeline stages, tech stack, pricing, troubleshooting, and architecture flexibility. Review it when you need background on why decisions were made or how the lesson is structured.
+
+---
+
 # ⛔ MANDATORY BOOT SEQUENCE — EXECUTE BEFORE ALL ELSE
 
 ## WHY THIS EXISTS
