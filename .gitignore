@@ -1,5 +1,5 @@
 .DS_Store
-/.claude
+.claude/settings.local.json
 
 # Generated plugin artifacts (rebuilt each session by CLAUDE.md boot sequence)
 assets/02-powerup/*.plugin
