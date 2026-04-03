@@ -20,10 +20,19 @@ If any check fails, run `/lesson-3:setup` first.
 
 ## Run Evaluation
 
+Ask the student whether they want to enable **reranking**. Explain the trade-off:
+
+- **Without reranking** (default): Faster (~5 min total). Results ranked by vector + keyword score only. Good baseline.
+- **With reranking** (`--rerank`): Slower (~10-15 min). Each retrieved chunk is scored by GPT-4o-mini for relevance before ranking. Improves precision, especially for broad or ambiguous queries. Adds a small cost per query.
+
 Activate the virtual environment and run the harness:
 
 ```bash
+# Without reranking (default)
 cd assets/03-advanced && source .venv/bin/activate && cd evaluation && python evaluate.py
+
+# With reranking
+cd assets/03-advanced && source .venv/bin/activate && cd evaluation && python evaluate.py --rerank
 ```
 
 If the venv doesn't exist yet, create it first:
@@ -34,6 +43,7 @@ cd assets/03-advanced && python3 -m venv .venv && source .venv/bin/activate && p
 
 Walk the student through the output:
 - Each query is processed sequentially (embed → search → generate → score)
+- If reranking is enabled, the retrieval step will show "rerank: true" in the Langfuse span
 - The summary table shows Ragas scores per query
 - The Langfuse dashboard URL is printed at the end
 

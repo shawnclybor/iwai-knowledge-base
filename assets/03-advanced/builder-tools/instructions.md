@@ -147,6 +147,23 @@ Run these 5 queries through the MCP server, comparing modes:
 
 Observe how results change across modes. Hybrid mode typically outperforms vector-only for queries with specific terms (like "DOT" or "FMLA"). Reranking improves precision by using GPT-4o-mini to judge relevance.
 
+### How Reranking Works
+
+By default, `search_kb` returns results ranked by a weighted combination of vector similarity and keyword match scores. This is fast (~300-600ms) but the ranking is purely mathematical — it doesn't "understand" whether a chunk actually answers the question.
+
+When you enable `rerank: true`, the MCP server:
+1. Retrieves **2x** the requested results from the initial search
+2. Sends each chunk to **GPT-4o-mini** with the query, asking it to rate relevance 0-1
+3. Re-sorts by the LLM relevance score and returns the top `match_count`
+
+**Trade-offs:**
+- Adds ~1-3 seconds of latency (one LLM call per chunk)
+- Costs a small amount per search (GPT-4o-mini pricing)
+- Significantly improves precision for broad or ambiguous queries
+- Less impactful for queries that already return strong keyword matches
+
+**When to use it:** Reranking is most valuable when the base search returns the right content but ranks it poorly — e.g., the relevant chunk is at position 5 instead of position 1. It's less necessary when keyword matching already surfaces the right result at the top.
+
 ---
 
 ## Step 6: Run Evaluation
@@ -158,8 +175,15 @@ Run the evaluation harness to score retrieval quality:
 ```bash
 cd assets/03-advanced
 source .venv/bin/activate
+
+# Default: hybrid search only (faster, ~5 min)
 cd evaluation && python evaluate.py
+
+# Optional: enable reranking (slower, ~10-15 min, better precision)
+cd evaluation && python evaluate.py --rerank
 ```
+
+The `--rerank` flag adds a GPT-4o-mini relevance scoring pass to each query's retrieval step — the same reranking available through `search_kb`. This lets you measure exactly how much reranking improves your scores. Run without it first to get a baseline, then compare with reranking enabled.
 
 This runs 15 test queries against the knowledge base, generates answers, and scores them with Ragas metrics:
 

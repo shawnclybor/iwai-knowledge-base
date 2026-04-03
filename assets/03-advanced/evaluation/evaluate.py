@@ -71,20 +71,62 @@ def embed_query(text: str) -> list[float]:
     return response.data[0].embedding
 
 
-def search_kb(query_text: str, query_embedding: list[float], match_count: int = 10) -> list[dict]:
-    """Call hybrid_search RPC on Supabase."""
+def search_kb(query_text: str, query_embedding: list[float], match_count: int = 10, rerank: bool = False) -> list[dict]:
+    """Call hybrid_search RPC on Supabase, optionally reranking with GPT-4o-mini."""
+    fetch_count = match_count * 2 if rerank else match_count
+
     result = supabase.rpc(
         "hybrid_search",
         {
             "query_text": query_text,
             "query_embedding": query_embedding,
-            "match_count": match_count,
+            "match_count": fetch_count,
             "vector_weight": 0.7,
             "text_weight": 0.3,
         },
     ).execute()
 
-    return result.data or []
+    results = result.data or []
+
+    if rerank and results:
+        results = rerank_results(query_text, results)
+        results = results[:match_count]
+
+    return results
+
+
+def rerank_results(query: str, results: list[dict]) -> list[dict]:
+    """Re-rank search results using GPT-4o-mini relevance scoring."""
+    scored = []
+    for r in results:
+        response = openai_client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "Rate the relevance of the following text passage to the query. "
+                        "Return ONLY a number between 0 and 1, where 1 is perfectly relevant. "
+                        "No explanation."
+                    ),
+                },
+                {
+                    "role": "user",
+                    "content": f"Query: {query}\n\nPassage: {r['content'][:1000]}",
+                },
+            ],
+            temperature=0,
+            max_tokens=5,
+        )
+        score_text = response.choices[0].message.content.strip() if response.choices[0].message.content else "0"
+        try:
+            rerank_score = float(score_text)
+        except ValueError:
+            rerank_score = 0.0
+        scored.append({**r, "rerank_score": rerank_score})
+
+    scored.sort(key=lambda x: x.get("rerank_score", 0), reverse=True)
+    return scored
 
 
 def generate_answer(question: str, contexts: list[str]) -> str:
@@ -177,7 +219,7 @@ def score_with_ragas(question: str, contexts: list[str], answer: str, ground_tru
         return {"faithfulness": None, "answer_relevancy": None, "context_precision": None}
 
 
-def evaluate_query(item: dict, index: int, total: int) -> dict:
+def evaluate_query(item: dict, index: int, total: int, rerank: bool = False) -> dict:
     """Run the full evaluation pipeline for a single query."""
     question = item["question"]
     expected_sources = item.get("expected_sources", [])
@@ -200,9 +242,9 @@ def evaluate_query(item: dict, index: int, total: int) -> dict:
     embed_span.end()
 
     # Step 2: Retrieve
-    retrieval_span = trace.start_observation(name="retrieval", as_type="retriever", input={"match_count": 10})
+    retrieval_span = trace.start_observation(name="retrieval", as_type="retriever", input={"match_count": 10, "rerank": rerank})
     start = time.time()
-    search_results = search_kb(question, query_embedding)
+    search_results = search_kb(question, query_embedding, rerank=rerank)
     contexts = [r["content"] for r in search_results]
     source_files = [r.get("file_name", "unknown") for r in search_results]
     retrieval_span.update(
@@ -297,8 +339,20 @@ def print_summary(results: list[dict]) -> None:
 
 
 def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Lesson 3 — Evaluation Harness")
+    parser.add_argument(
+        "--rerank",
+        action="store_true",
+        help="Re-rank search results using GPT-4o-mini before scoring (adds latency and cost)",
+    )
+    args = parser.parse_args()
+
     print("Lesson 3 — Evaluation Harness")
     print(f"Langfuse host: {os.environ['LANGFUSE_BASE_URL']}")
+    if args.rerank:
+        print("Reranking: ENABLED (GPT-4o-mini)")
     print()
 
     # Load dataset
@@ -308,7 +362,7 @@ def main():
     # Run evaluations
     results = []
     for i, item in enumerate(dataset):
-        result = evaluate_query(item, i, len(dataset))
+        result = evaluate_query(item, i, len(dataset), rerank=args.rerank)
         results.append(result)
 
     # Flush Langfuse
