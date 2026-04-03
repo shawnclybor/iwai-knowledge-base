@@ -62,16 +62,21 @@ Re-ranking solves this with a second pass: after the initial search returns cand
 
 The `.mcp.json` file at the repo root tells Claude Code about available MCP servers:
 
+First compile the server: `cd assets/03-advanced/mcp-server && npx tsc`
+
 ```json
 {
   "mcpServers": {
     "kb-search": {
-      "command": "npx",
-      "args": ["tsx", "src/index.ts"],
-      "cwd": "assets/03-advanced/mcp-server"
+      "command": "node",
+      "args": ["/absolute/path/to/assets/03-advanced/mcp-server/dist/index.js"]
     }
   }
 }
 ```
 
-Claude Code reads this on startup, spawns the server process, and makes its tools available. After modifying `.mcp.json`, you must restart Claude Code.
+**Important:** Use an absolute path in `args` — do NOT use a relative path with `cwd`. The `cwd` field can cause tools to silently fail to register even though the server connects and responds to JSON-RPC. This matches the official MCP docs pattern. Also ensure no trailing blank lines in the `env` block.
+
+Using compiled JS (`dist/index.js`) instead of `npx tsx` avoids startup noise on stderr that can interfere with the MCP stdio handshake.
+
+Claude Code reads `.mcp.json` on startup, spawns the server process, and makes its tools available. After modifying `.mcp.json`, you must reload VS Code (Developer: Reload Window) to pick up changes.

@@ -1,4 +1,5 @@
 .DS_Store
+.claude/settings.json
 .claude/settings.local.json
 
 # Generated plugin artifacts (rebuilt each session by CLAUDE.md boot sequence)
@@ -11,7 +12,12 @@ assets/02-powerup/pipeline/scripts/.env
 
 # Lesson 3 secrets and dependencies
 assets/03-advanced/.env
+assets/03-advanced/.venv/
+.mcp.json
 assets/03-advanced/mcp-server/node_modules/
+assets/03-advanced/mcp-server/dist/
+assets/03-advanced/mcp-server/deploy/
+assets/03-advanced/mcp-server/package-lock.json
 
 # Supabase CLI local state
 supabase/.temp/

@@ -1,13 +1,5 @@
+import { z } from "zod";
 import { getSupabase, getOpenAI, embedQuery } from "../lib/supabase.js";
-
-interface SearchKbArgs {
-  query: string;
-  search_mode?: "hybrid" | "vector";
-  match_count?: number;
-  vector_weight?: number;
-  text_weight?: number;
-  rerank?: boolean;
-}
 
 interface SearchResult {
   id: string;
@@ -20,51 +12,28 @@ interface SearchResult {
   rerank_score?: number;
 }
 
-export const searchKbTool = {
-  name: "search_kb",
-  description:
-    "Search the knowledge base using semantic and/or keyword search. " +
-    "Supports hybrid mode (vector + full-text), vector-only mode, and optional LLM-based reranking.",
-  inputSchema: {
-    type: "object" as const,
-    properties: {
-      query: {
-        type: "string",
-        description: "Natural language search query",
-      },
-      search_mode: {
-        type: "string",
-        enum: ["hybrid", "vector"],
-        description:
-          "Search mode: 'hybrid' uses vector + full-text search (default), 'vector' uses pure vector similarity",
-        default: "hybrid",
-      },
-      match_count: {
-        type: "number",
-        description: "Maximum number of results to return (default: 10)",
-        default: 10,
-      },
-      vector_weight: {
-        type: "number",
-        description:
-          "Weight for vector similarity in hybrid mode, 0-1 (default: 0.7)",
-        default: 0.7,
-      },
-      text_weight: {
-        type: "number",
-        description:
-          "Weight for keyword matching in hybrid mode, 0-1 (default: 0.3)",
-        default: 0.3,
-      },
-      rerank: {
-        type: "boolean",
-        description:
-          "Re-rank results using GPT-4o-mini for improved precision (default: false)",
-        default: false,
-      },
-    },
-    required: ["query"],
-  },
+export const searchKbSchema = {
+  query: z.string().describe("Natural language search query"),
+  search_mode: z.enum(["hybrid", "vector"]).default("hybrid").describe(
+    "Search mode: 'hybrid' uses vector + full-text search (default), 'vector' uses pure vector similarity"
+  ),
+  match_count: z.number().default(10).describe("Maximum number of results to return (default: 10)"),
+  vector_weight: z.number().default(0.7).describe("Weight for vector similarity in hybrid mode, 0-1 (default: 0.7)"),
+  text_weight: z.number().default(0.3).describe("Weight for keyword matching in hybrid mode, 0-1 (default: 0.3)"),
+  rerank: z.boolean().default(false).describe("Re-rank results using GPT-4o-mini for improved precision (default: false)"),
+};
+
+export const SEARCH_KB_DESCRIPTION =
+  "Search the knowledge base using semantic and/or keyword search. " +
+  "Supports hybrid mode (vector + full-text), vector-only mode, and optional LLM-based reranking.";
+
+type SearchKbArgs = {
+  query: string;
+  search_mode?: "hybrid" | "vector";
+  match_count?: number;
+  vector_weight?: number;
+  text_weight?: number;
+  rerank?: boolean;
 };
 
 export async function handleSearchKb(args: SearchKbArgs): Promise<string> {

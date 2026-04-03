@@ -13,15 +13,23 @@ Read `assets/03-advanced/templates/evaluation-harness.md` for background on Lang
 ## Pre-flight Checks
 
 1. Verify `MCP_SERVER_READY=1` in `assets/03-advanced/.env`
-2. Verify Langfuse credentials are set in `.env` (LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY, LANGFUSE_HOST)
+2. Verify Langfuse credentials are set in `.env` (LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY, LANGFUSE_BASE_URL)
 3. Verify Python dependencies are installed: `python -c "import langfuse, ragas, openai, supabase"`
 
 If any check fails, run `/lesson-3:setup` first.
 
 ## Run Evaluation
 
+Activate the virtual environment and run the harness:
+
 ```bash
-cd assets/03-advanced/evaluation && python evaluate.py
+cd assets/03-advanced && source .venv/bin/activate && cd evaluation && python evaluate.py
+```
+
+If the venv doesn't exist yet, create it first:
+
+```bash
+cd assets/03-advanced && python3 -m venv .venv && source .venv/bin/activate && pip install -r evaluation/requirements.txt
 ```
 
 Walk the student through the output:

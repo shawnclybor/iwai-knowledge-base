@@ -1,8 +1,8 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { validateEnv } from "./lib/supabase.js";
-import { searchKbTool, handleSearchKb } from "./tools/search-kb.js";
-import { listSourcesTool, handleListSources } from "./tools/list-sources.js";
+import { searchKbSchema, SEARCH_KB_DESCRIPTION, handleSearchKb } from "./tools/search-kb.js";
+import { LIST_SOURCES_DESCRIPTION, handleListSources } from "./tools/list-sources.js";
 
 // Validate environment variables before starting
 try {
@@ -19,12 +19,12 @@ const server = new McpServer({
 
 // Register search_kb tool
 server.tool(
-  searchKbTool.name,
-  searchKbTool.description,
-  searchKbTool.inputSchema.properties,
+  "search_kb",
+  SEARCH_KB_DESCRIPTION,
+  searchKbSchema,
   async (args) => {
     try {
-      const result = await handleSearchKb(args as any);
+      const result = await handleSearchKb(args);
       return { content: [{ type: "text", text: result }] };
     } catch (err: any) {
       return {
@@ -37,9 +37,9 @@ server.tool(
 
 // Register list_sources tool
 server.tool(
-  listSourcesTool.name,
-  listSourcesTool.description,
-  listSourcesTool.inputSchema.properties,
+  "list_sources",
+  LIST_SOURCES_DESCRIPTION,
+  {},
   async () => {
     try {
       const result = await handleListSources();

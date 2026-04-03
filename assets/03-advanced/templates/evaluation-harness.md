@@ -24,6 +24,14 @@ Think of it like unit tests for search quality. You write the test queries, defi
 
 The harness does NOT go through the MCP server — it calls the RPCs directly. This means you can run it independently, and the results measure the quality of your data and search functions, not the MCP wrapper.
 
+**Important: SDK versions.** The evaluation harness is built for **Langfuse v4** and **Ragas v0.4**. Key API details:
+- Langfuse v4 uses `start_observation()` instead of the older `trace()` API
+- Ragas v0.4 returns scores via `result.scores` (a list of dicts), not via dict-style `result["metric"]`
+- Ragas `context_precision` requires a `reference` column (renamed from `ground_truth` in earlier versions)
+- The harness passes explicit LLM and embedding wrappers to Ragas to avoid auto-detection issues
+
+The pinned versions in `requirements.txt` ensure you get a compatible combination.
+
 ## Setting Up Langfuse
 
 Langfuse is a free, open-source observability platform for LLM applications. You need an account before running the evaluation.
@@ -36,12 +44,12 @@ Langfuse is a free, open-source observability platform for LLM applications. You
 4. You'll get three values:
    - **Public Key** (`pk-lf-...`) — identifies your project
    - **Secret Key** (`sk-lf-...`) — authenticates writes
-   - **Host** — `https://cloud.langfuse.com` (default for cloud)
+   - **Base URL** — `https://us.cloud.langfuse.com` (US region)
 5. These go into your `assets/03-advanced/.env` file as:
    ```
    LANGFUSE_PUBLIC_KEY=pk-lf-...
    LANGFUSE_SECRET_KEY=sk-lf-...
-   LANGFUSE_HOST=https://cloud.langfuse.com
+   LANGFUSE_BASE_URL="https://us.cloud.langfuse.com"
    ```
 
 After running the evaluation, go to your Langfuse project dashboard to see the traces, spans, and scores visually.

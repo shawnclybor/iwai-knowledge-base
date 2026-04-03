@@ -48,31 +48,85 @@ If the auditor reports CRITICAL issues, resolve them before continuing. NEEDS AT
 
 ## Step 2: Environment Variables
 
-Check if Lesson 2's `.env` exists at `assets/02-powerup/pipeline/scripts/.env`. If it does, offer to reuse the Supabase and OpenAI keys.
+Check if the student already has Supabase and OpenAI keys configured (e.g., from Lesson 2 or their Supabase MCP connection). If so, offer to reuse them.
 
-Collect all required values and write to `assets/03-advanced/.env`:
+Create a blank `assets/03-advanced/.env` with the key names below. Do NOT ask the user to paste secrets into the conversation — have them edit the file directly.
+
+Point the user to these URLs to find their keys:
+
+| Key | Where to find it | Format |
+|-----|------------------|--------|
+| `SUPABASE_URL` | Auto-detected from Supabase MCP `get_project_url` | `https://<ref>.supabase.co` |
+| `SUPABASE_KEY` | https://supabase.com/dashboard/project/<PROJECT_ID>/settings/api → `service_role` secret | `eyJ...` (JWT, ~170 chars) |
+| `OPENAI_API_KEY` | https://platform.openai.com/api-keys | `sk-...` |
+| `LANGFUSE_PUBLIC_KEY` | https://us.cloud.langfuse.com/project/<PROJECT_ID>/settings/api-keys | `pk-lf-...` |
+| `LANGFUSE_SECRET_KEY` | Same page as public key | `sk-lf-...` |
+
+Pre-fill `SUPABASE_URL` if you can detect it. Pre-fill `LANGFUSE_BASE_URL` with the correct value. Leave all secret fields blank for the user to fill in.
 
 ```
-SUPABASE_URL=<from L2 or ask>
-SUPABASE_KEY=<from L2 or ask — must be service role key>
-OPENAI_API_KEY=<from L2 or ask>
-LANGFUSE_PUBLIC_KEY=<ask — sign up at https://langfuse.com, go to Settings → API Keys>
-LANGFUSE_SECRET_KEY=<ask>
-LANGFUSE_HOST=https://cloud.langfuse.com
+SUPABASE_URL=<auto-detect from Supabase MCP if possible>
+SUPABASE_KEY=
+OPENAI_API_KEY=
+LANGFUSE_PUBLIC_KEY=
+LANGFUSE_SECRET_KEY=
+LANGFUSE_BASE_URL="https://us.cloud.langfuse.com"
 SETUP_COMPLETE=0
 MCP_SERVER_READY=0
 EVALUATION_COMPLETE=0
 ```
 
+## Step 2b: Validate Connections
+
+After the user has filled in their `.env`, verify each credential works before proceeding. Run these checks and report results as a pass/fail table:
+
+1. **Supabase** — Use the Supabase MCP to run `SELECT 1` against the project. The project ID can be extracted from the SUPABASE_URL (the subdomain before `.supabase.co`).
+2. **OpenAI** — Run a minimal embedding call to verify the API key:
+   ```bash
+   cd assets/03-advanced && python3 -c "
+   from dotenv import load_dotenv; load_dotenv()
+   import os, openai
+   client = openai.OpenAI(api_key=os.environ['OPENAI_API_KEY'])
+   r = client.embeddings.create(input='test', model='text-embedding-3-small')
+   print(f'OpenAI OK — embedding dim: {len(r.data[0].embedding)}')
+   "
+   ```
+3. **Langfuse** — Verify the keys authenticate:
+   ```bash
+   cd assets/03-advanced && python3 -c "
+   from dotenv import load_dotenv; load_dotenv()
+   import os
+   from langfuse import Langfuse
+   lf = Langfuse(
+       public_key=os.environ['LANGFUSE_PUBLIC_KEY'],
+       secret_key=os.environ['LANGFUSE_SECRET_KEY'],
+       host=os.environ['LANGFUSE_BASE_URL']
+   )
+   lf.auth_check()
+   print('Langfuse OK — authenticated')
+   "
+   ```
+
+If any check fails, tell the user which key has the problem and link them back to the relevant URL from the Step 2 table. Do not proceed until all three pass.
+
 ## Step 3: Install Dependencies
+
+**Critical version notes:**
+- The MCP SDK (`@modelcontextprotocol/sdk ^1.0.0`) requires **Zod v3** for tool schema registration. Zod v4 is incompatible and will cause a silent startup failure. The `package.json` pins `zod: "^3.25.76"` — do not upgrade to v4.
+- Python dependencies require a **virtual environment** on macOS (PEP 668). Create one at `assets/03-advanced/.venv` before installing.
 
 ```bash
 # MCP server
 cd assets/03-advanced/mcp-server && npm install
 
-# Evaluation harness
-pip install -r assets/03-advanced/evaluation/requirements.txt
+# Evaluation harness (use venv)
+cd assets/03-advanced
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r evaluation/requirements.txt
 ```
+
+Add `.venv/` to `.gitignore` if not already present.
 
 ## Step 4: Apply Migration
 
@@ -88,13 +142,22 @@ SELECT count(*) FROM query_log;  -- Should return 0 (table exists, empty)
 
 Read the existing `.mcp.json` at the repo root (if it exists). Merge the `kb-search` entry into the `mcpServers` object. Do NOT overwrite other entries.
 
-The `kb-search` entry:
+Before writing the config, compile the MCP server TypeScript to JavaScript:
+
+```bash
+cd assets/03-advanced/mcp-server && npx tsc
+```
+
+Verify `dist/index.js` exists after compilation.
+
+The `kb-search` entry (uses compiled JS per MCP best practices — avoids npx/tsx startup issues):
+
+**Important:** Use an absolute path in `args` — do NOT use a relative path with `cwd`. The `cwd` field can cause tools to silently fail to register despite the server connecting. Also ensure no trailing blank lines in the `env` block.
 
 ```json
 {
-  "command": "npx",
-  "args": ["tsx", "src/index.ts"],
-  "cwd": "assets/03-advanced/mcp-server",
+  "command": "node",
+  "args": ["/absolute/path/to/assets/03-advanced/mcp-server/dist/index.js"],
   "env": {
     "SUPABASE_URL": "<actual value from .env>",
     "SUPABASE_KEY": "<actual value from .env>",

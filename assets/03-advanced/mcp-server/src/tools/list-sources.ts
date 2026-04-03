@@ -1,14 +1,7 @@
 import { getSupabase } from "../lib/supabase.js";
 
-export const listSourcesTool = {
-  name: "list_sources",
-  description:
-    "List all files ingested into the knowledge base with their processing status and chunk counts.",
-  inputSchema: {
-    type: "object" as const,
-    properties: {},
-  },
-};
+export const LIST_SOURCES_DESCRIPTION =
+  "List all files ingested into the knowledge base with their processing status and chunk counts.";
 
 export async function handleListSources(): Promise<string> {
   const supabase = getSupabase();

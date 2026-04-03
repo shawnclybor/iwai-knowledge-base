@@ -27,7 +27,7 @@ REQUIRED_VARS = [
     "OPENAI_API_KEY",
     "LANGFUSE_PUBLIC_KEY",
     "LANGFUSE_SECRET_KEY",
-    "LANGFUSE_HOST",
+    "LANGFUSE_BASE_URL",
 ]
 
 missing = [v for v in REQUIRED_VARS if not os.environ.get(v)]
@@ -46,7 +46,7 @@ openai_client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 langfuse = Langfuse(
     public_key=os.environ["LANGFUSE_PUBLIC_KEY"],
     secret_key=os.environ["LANGFUSE_SECRET_KEY"],
-    host=os.environ["LANGFUSE_HOST"],
+    host=os.environ["LANGFUSE_BASE_URL"],
 )
 
 EMBEDDING_MODEL = "text-embedding-3-small"
@@ -107,6 +107,27 @@ def generate_answer(question: str, contexts: list[str]) -> str:
     return response.choices[0].message.content or ""
 
 
+def _extract_scalar(value):
+    """Extract a scalar from a Ragas result value (may be list or scalar)."""
+    if isinstance(value, list):
+        return value[0] if value else None
+    return value
+
+
+def _get_ragas_llm_and_embeddings():
+    """Create Ragas-compatible LLM and embeddings wrappers."""
+    from ragas.embeddings import LangchainEmbeddingsWrapper
+    from ragas.llms import LangchainLLMWrapper
+    from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+
+    import warnings
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", DeprecationWarning)
+        llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-4o-mini"))
+        embeddings = LangchainEmbeddingsWrapper(OpenAIEmbeddings())
+    return llm, embeddings
+
+
 def score_with_ragas(question: str, contexts: list[str], answer: str, ground_truth: str | None) -> dict:
     """Score a single query result with Ragas metrics."""
     try:
@@ -120,19 +141,37 @@ def score_with_ragas(question: str, contexts: list[str], answer: str, ground_tru
             "answer": [answer],
         }
 
-        metrics = [faithfulness, answer_relevancy, context_precision]
+        metrics = [faithfulness, answer_relevancy]
 
+        # context_precision requires a reference answer
         if ground_truth:
-            eval_data["ground_truth"] = [ground_truth]
+            eval_data["reference"] = [ground_truth]
+            metrics.append(context_precision)
 
+        llm, embeddings = _get_ragas_llm_and_embeddings()
         dataset = Dataset.from_dict(eval_data)
-        result = ragas_evaluate(dataset, metrics=metrics)
+        result = ragas_evaluate(dataset, metrics=metrics, llm=llm, embeddings=embeddings)
 
-        return {
-            "faithfulness": result["faithfulness"],
-            "answer_relevancy": result["answer_relevancy"],
-            "context_precision": result["context_precision"],
+        # Ragas v0.4 returns .scores as a list of dicts
+        raw_scores = result.scores[0] if result.scores else {}
+
+        scores = {
+            "faithfulness": raw_scores.get("faithfulness"),
+            "answer_relevancy": raw_scores.get("answer_relevancy"),
+            "context_precision": raw_scores.get("context_precision"),
         }
+
+        # Filter out NaN values and convert numpy types to plain floats
+        import math
+        for k, v in scores.items():
+            if v is not None:
+                v = float(v)
+                if math.isnan(v):
+                    scores[k] = None
+                else:
+                    scores[k] = v
+
+        return scores
     except Exception as e:
         print(f"  Warning: Ragas scoring failed: {e}")
         return {"faithfulness": None, "answer_relevancy": None, "context_precision": None}
@@ -146,47 +185,56 @@ def evaluate_query(item: dict, index: int, total: int) -> dict:
 
     print(f"  [{index + 1}/{total}] {question[:60]}...")
 
-    # Create a Langfuse trace for this query
-    trace = langfuse.trace(
+    # Create a Langfuse trace for this query (v4 API: start_observation)
+    trace = langfuse.start_observation(
         name=f"eval-query-{index + 1}",
+        as_type="agent",
         input={"question": question, "expected_sources": expected_sources},
     )
 
     # Step 1: Embed
-    embed_span = trace.span(name="embedding", input={"model": EMBEDDING_MODEL})
+    embed_span = trace.start_observation(name="embedding", as_type="embedding", input={"model": EMBEDDING_MODEL})
     start = time.time()
     query_embedding = embed_query(question)
-    embed_span.end(output={"dimensions": len(query_embedding), "latency_ms": int((time.time() - start) * 1000)})
+    embed_span.update(output={"dimensions": len(query_embedding), "latency_ms": int((time.time() - start) * 1000)})
+    embed_span.end()
 
     # Step 2: Retrieve
-    retrieval_span = trace.span(name="retrieval", input={"match_count": 10})
+    retrieval_span = trace.start_observation(name="retrieval", as_type="retriever", input={"match_count": 10})
     start = time.time()
     search_results = search_kb(question, query_embedding)
     contexts = [r["content"] for r in search_results]
     source_files = [r.get("file_name", "unknown") for r in search_results]
-    retrieval_span.end(
+    retrieval_span.update(
         output={
             "result_count": len(search_results),
             "source_files": source_files[:5],
             "latency_ms": int((time.time() - start) * 1000),
         }
     )
+    retrieval_span.end()
 
     # Step 3: Generate answer
-    generation_span = trace.span(name="generation", input={"model": GENERATION_MODEL, "context_count": len(contexts)})
+    generation_span = trace.start_observation(
+        name="generation", as_type="generation",
+        input={"model": GENERATION_MODEL, "context_count": len(contexts)},
+        model=GENERATION_MODEL,
+    )
     start = time.time()
     answer = generate_answer(question, contexts[:5])
-    generation_span.end(output={"answer": answer[:200], "latency_ms": int((time.time() - start) * 1000)})
+    generation_span.update(output={"answer": answer[:200], "latency_ms": int((time.time() - start) * 1000)})
+    generation_span.end()
 
     # Step 4: Score with Ragas
-    scoring_span = trace.span(name="scoring")
+    scoring_span = trace.start_observation(name="scoring", as_type="evaluator")
     scores = score_with_ragas(question, contexts[:5], answer, ground_truth)
-    scoring_span.end(output=scores)
+    scoring_span.update(output=scores)
+    scoring_span.end()
 
     # Attach scores to the trace
     for metric_name, score_value in scores.items():
-        if score_value is not None:
-            trace.score(name=metric_name, value=score_value)
+        if score_value is not None and isinstance(score_value, (int, float)):
+            trace.score(name=metric_name, value=float(score_value))
 
     # Check source accuracy
     found_sources = set(source_files[:5])
@@ -200,6 +248,7 @@ def evaluate_query(item: dict, index: int, total: int) -> dict:
             "scores": scores,
         }
     )
+    trace.end()
 
     return {
         "question": question,
@@ -249,7 +298,7 @@ def print_summary(results: list[dict]) -> None:
 
 def main():
     print("Lesson 3 — Evaluation Harness")
-    print(f"Langfuse host: {os.environ['LANGFUSE_HOST']}")
+    print(f"Langfuse host: {os.environ['LANGFUSE_BASE_URL']}")
     print()
 
     # Load dataset
@@ -269,7 +318,7 @@ def main():
     print_summary(results)
 
     # Print Langfuse dashboard link
-    host = os.environ["LANGFUSE_HOST"].rstrip("/")
+    host = os.environ["LANGFUSE_BASE_URL"].rstrip("/")
     print(f"\nView traces in Langfuse: {host}")
     print("Navigate to Traces to see detailed spans and scores for each query.\n")
 

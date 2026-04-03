@@ -39,11 +39,11 @@ SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_KEY=your-service-role-key
 OPENAI_API_KEY=sk-your-openai-key
 
-# New for Lesson 3 — sign up at https://langfuse.com
+# New for Lesson 3 — sign up at https://us.cloud.langfuse.com
 # Go to Settings → API Keys to get these values
 LANGFUSE_PUBLIC_KEY=pk-lf-...
 LANGFUSE_SECRET_KEY=sk-lf-...
-LANGFUSE_HOST=https://cloud.langfuse.com
+LANGFUSE_BASE_URL="https://us.cloud.langfuse.com"
 
 # Resume flags (set automatically by commands)
 SETUP_COMPLETE=0
@@ -59,8 +59,11 @@ EVALUATION_COMPLETE=0
 # MCP server (TypeScript)
 cd assets/03-advanced/mcp-server && npm install
 
-# Evaluation harness (Python)
-pip install -r assets/03-advanced/evaluation/requirements.txt
+# Evaluation harness (Python — requires virtual environment on macOS)
+cd assets/03-advanced
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r evaluation/requirements.txt
 ```
 
 ---
@@ -96,13 +99,16 @@ This step configures the custom MCP server that gives Claude direct access to th
 
 The setup command merges this into your existing `.mcp.json` (if any):
 
+First compile the TypeScript server: `cd assets/03-advanced/mcp-server && npx tsc`
+
+**Important:** Use an absolute path in `args` — do NOT use a relative path with `cwd`. The `cwd` field can cause tools to silently fail to register even though the server connects. Also ensure no trailing blank lines in the `env` block.
+
 ```json
 {
   "mcpServers": {
     "kb-search": {
-      "command": "npx",
-      "args": ["tsx", "src/index.ts"],
-      "cwd": "assets/03-advanced/mcp-server",
+      "command": "node",
+      "args": ["/absolute/path/to/assets/03-advanced/mcp-server/dist/index.js"],
       "env": {
         "SUPABASE_URL": "your-url",
         "SUPABASE_KEY": "your-key",
@@ -113,7 +119,7 @@ The setup command merges this into your existing `.mcp.json` (if any):
 }
 ```
 
-**Restart Claude Code** to load the new MCP server. Then verify:
+**Reload VS Code** (Developer: Reload Window) to load the new MCP server. Then verify:
 
 ```
 > Ask Claude: "What tools do you have from the kb-search server?"
@@ -150,11 +156,12 @@ Observe how results change across modes. Hybrid mode typically outperforms vecto
 Run the evaluation harness to score retrieval quality:
 
 ```bash
-cd assets/03-advanced/evaluation
-python evaluate.py
+cd assets/03-advanced
+source .venv/bin/activate
+cd evaluation && python evaluate.py
 ```
 
-This runs 15-20 test queries against the knowledge base, generates answers, and scores them with Ragas metrics:
+This runs 15 test queries against the knowledge base, generates answers, and scores them with Ragas metrics:
 
 - **Context Precision** — are relevant chunks ranked higher?
 - **Faithfulness** — is the answer grounded in the retrieved context?
